@@ -20,6 +20,12 @@ html {
     background-color: #f7f7f7;
 }
 
+.login-error {
+    color: red;
+    margin-top: 20px;
+}
+
+
 .login-imageContainer {
     flex: 2.45;
     background: url('trainbg.jpg') no-repeat center center;
@@ -56,6 +62,7 @@ h1 {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .login-button:hover {
@@ -63,7 +70,7 @@ h1 {
 }
 
 .login-formContainer p {
-    margin-top: 20px;
+    margin-top: 5px;
     text-align: center;
 }
 

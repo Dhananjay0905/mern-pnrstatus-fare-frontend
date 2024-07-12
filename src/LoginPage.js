@@ -10,6 +10,7 @@ const LoginPage = () => {
     });
 
     const [redirectToHome, setRedirectToHome] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleLoginChange = (e) => {
         const { name, value } = e.target;
@@ -22,7 +23,7 @@ const LoginPage = () => {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://mern-pnrstatus-fare-server.vercel.app/', loginData); // Adjust endpoint if necessary
+            const response = await axios.post('http://localhost:8000/', loginData); // Adjust endpoint if necessary
             const { message } = response.data;
 
             if (response.status === 200) {
@@ -30,9 +31,15 @@ const LoginPage = () => {
                 setRedirectToHome(true); // Set redirect state to true on successful login
             } else {
                 console.log(message);
+                setErrorMessage(message);
             }
         } catch (error) {
             console.error('Login Failed', error);
+            if (error.response && error.response.status === 401) {
+                setErrorMessage(error.response.data.error);
+            } else {
+                setErrorMessage('An unexpected error occurred.');
+            }
         }
         setLoginData({
             username: '',
@@ -67,6 +74,7 @@ const LoginPage = () => {
                         className="login-input"
                     />
                     <button type="submit" className="login-button">Login</button>
+                    {errorMessage && <p className="login-error">{errorMessage}</p>}
                     <p>
                         Not registered yet? <Link to="/register" className="login-link">Register</Link>
                     </p>
