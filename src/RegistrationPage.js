@@ -66,7 +66,7 @@ const RegistrationPage = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/register', registrationData);
+            const response = await axios.post('https://mern-pnrstatus-fare-server.vercel.app/register', registrationData);
             console.log('Registration Successful:', response.data);
             setRedirectToLogin(true);
             setRegistrationData({
