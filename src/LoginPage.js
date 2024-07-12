@@ -23,7 +23,7 @@ const LoginPage = () => {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/', loginData); // Adjust endpoint if necessary
+            const response = await axios.post('https://mern-pnrstatus-fare-frontend.vercel.app/', loginData); // Adjust endpoint if necessary
             const { message } = response.data;
 
             if (response.status === 200) {

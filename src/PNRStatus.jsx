@@ -14,7 +14,7 @@ const PNRStatusPage = () => {
 
     const fetchPNRStatus = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/pnr/${pnr}`);
+            const response = await axios.get(`https://mern-pnrstatus-fare-frontend.vercel.app/pnr/${pnr}`);
             console.log('Response:', response.data);
             const responseData = response.data;
 
